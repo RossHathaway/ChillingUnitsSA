@@ -11,7 +11,7 @@ app.use(morgan('dev'))
 app.use(express.static('public'))
 
 app.get('/data', (req, res) => {
-  // database function
+  res.download('/filepath')
 })
 
 app.listen(port, () => console.log(`server is listening on port ${port}`))

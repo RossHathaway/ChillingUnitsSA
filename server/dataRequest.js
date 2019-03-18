@@ -9,6 +9,6 @@ setTimeout(() => {
     }).catch((err) => {
       console.log('could not add data to database', err)
     })
-}, 86400000)
+}, 86400000 + 60000)
 
 module.exports = {}
