@@ -5,6 +5,7 @@ import Condition from './condition.js'
 class App extends React.Component {
   constructor(props) {
     super(props)
+    console.log('calling constructor')
     this.state = {
       chillingHours: null,
       conditions: [
@@ -21,7 +22,9 @@ class App extends React.Component {
   // }
 
   removeEntry(i) {
-    this.setState({conditions: this.state.conditions.splice(i, 1)})
+    let newConditions = this.state.conditions
+    newConditions.splice(i, 1)
+    this.setState({conditions: newConditions})
   }
 
   addCondition() {
@@ -32,6 +35,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('state in render', this.state.conditions)
     return (
     <React.Fragment>
       {this.state.chillingHours === null ? null : (
@@ -55,13 +59,14 @@ class App extends React.Component {
         </fieldset>
         <input type="submit" value="Calculate Chill Units"></input>
       </form>
+      <button onClick={this.addCondition}>Add condition</button>
       <br></br>
       <button>
         Download Database (SQL dump, can be restored with pg_restore)
       </button>
-      <button onClick={this.addCondition}>Add condition</button>
+      
       <br></br>
-      chillingUnits
+      
       <div id="attribution">
         <br></br>
         <a href="https://darksky.net">Powered by Dark Sky</a>
