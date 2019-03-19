@@ -8,10 +8,14 @@ const app = express()
 
 app.use(cors())
 app.use(morgan('dev'))
-app.use(express.static('public'))
+// app.use(express.static('public'))
 
 app.get('/data', (req, res) => {
   res.download('/filepath')
+})
+
+app.get('/', (req, res) => {
+  res.send('../public/index.html')
 })
 
 app.listen(port, () => console.log(`server is listening on port ${port}`))
